@@ -20,7 +20,8 @@
 
         <activity
             android:name=".FirstActivity"
-            android:label="FirstPage">
+            android:label="FirstPage"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

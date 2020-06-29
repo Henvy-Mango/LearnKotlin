@@ -20,10 +20,7 @@ class FirstActivity : AppCompatActivity() {
         Log.d(TAG, "OnCreate")
 
         //恢复丢失数据，用于Activity被回收
-        if (savedInstanceState != null) {
-            val tmp = savedInstanceState.getString("data")
-            Log.d(TAG, tmp)
-        }
+        savedInstanceState?.let { Log.d(TAG, it.getString("data")) }
 
         //过去式写法
         //val bt1: Button = findViewById(R.id.bt1)
@@ -44,11 +41,11 @@ class FirstActivity : AppCompatActivity() {
             //intent.addCategory("com.example.activitytest.GOGO")
             //startActivity(intent)
 
-//            //隐式Intent 调用其他Activity
-//            val intent = Intent(Intent.ACTION_VIEW)
-//            intent.data= Uri.parse("https://naomi.pub")
-//            //ThirdActivity 响应此Intent ，查看intent-filter标签
-//            startActivity(intent)
+            //隐式Intent 调用其他Activity
+            //val intent = Intent(Intent.ACTION_VIEW)
+            //intent.data= Uri.parse("https://naomi.pub")
+            //ThirdActivity 响应此Intent ，查看intent-filter标签
+            //startActivity(intent)
 
             //下级界面返回数据给上级界面
             startActivityForResult(intent, 1)
@@ -65,11 +62,13 @@ class FirstActivity : AppCompatActivity() {
         outState.putString("data", tmp)
     }
 
+    //菜单创建
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
+    //菜单选择监听器
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.add -> Toast.makeText(this, "add", Toast.LENGTH_SHORT).show()
@@ -82,8 +81,7 @@ class FirstActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         when (requestCode) {
             1 -> if (resultCode == Activity.RESULT_OK) {
-                val data_return = data?.getStringExtra("data_return")
-                Log.d("first", data_return)
+                val data_return = data?.let { Log.d("first", it.getStringExtra("data_return")) }
             }
         }
     }
