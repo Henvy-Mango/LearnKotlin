@@ -1,2 +1,3 @@
+include ':junior'
 include ':activity'
 rootProject.name = "LearnKotlin"
