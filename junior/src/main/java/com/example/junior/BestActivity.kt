@@ -35,6 +35,7 @@ class BestActivity : AppCompatActivity() {
                 BestEditText.setText("")
             }
         }
+        BestEditText.setOnClickListener { }
     }
 
     private fun initMsg() {
