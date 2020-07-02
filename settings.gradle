@@ -1,3 +1,4 @@
+include ':broadcasttest'
 include ':fragmentactivity'
 include ':junior'
 include ':activity'
