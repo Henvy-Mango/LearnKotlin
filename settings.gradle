@@ -1,4 +1,6 @@
-include ':broadcasttest'
+include ':contentprovidertest'
+include ':contentprovider'
+include ':broadcasttestSQLite'
 include ':fragmentactivity'
 include ':junior'
 include ':activity'
