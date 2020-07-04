@@ -15,8 +15,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //lazy函数实现，查看Later类
+        val tmp by later {
+            Log.d("naomi", "later joooooob")
+            "qqq"
+        }
+
         bt_add.setOnClickListener {
             val uri = Uri.parse("content://com.example.contentprovider/book")
+            Log.d("naomi", tmp)
             var values = contentValuesOf(
                 "name" to "aaaa",
                 "price" to 222.33,
