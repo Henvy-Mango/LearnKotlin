@@ -1,3 +1,5 @@
+include ':notificationtest:cameraalbumtest'
+include ':notificationtest'
 include ':contentprovidertest'
 include ':contentprovider'
 include ':broadcasttestSQLite'
