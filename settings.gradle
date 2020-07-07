@@ -1,3 +1,5 @@
+include ':retrofittest'
+include ':networktest'
 include ':servicetest'
 include ':mediaplayer'
 include ':cameraalbumtest'
