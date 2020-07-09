@@ -1,4 +1,4 @@
-package com.example.networktest
+package com.example.retrofittest
 
 import okhttp3.OkHttpClient
 import okhttp3.Request

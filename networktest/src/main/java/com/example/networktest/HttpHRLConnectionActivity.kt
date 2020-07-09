@@ -19,7 +19,7 @@ class HttpHRLConnectionActivity : AppCompatActivity() {
 
             //HttpURLConnection回调方式
             HttpUtil.sendHttpURLRequest("https://naomi.pub", object : HttpCallbackListener {
-                override fun onFinsh(response: String) {
+                override fun onFinish(response: String) {
                     showRespone(response)
                 }
 
