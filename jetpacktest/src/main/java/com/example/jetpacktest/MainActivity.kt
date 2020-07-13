@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
             refreshCounter()
         }
         refreshCounter()
+
+        lifecycle.addObserver(MyObserver(lifecycle))
     }
 
     private fun refreshCounter() {
