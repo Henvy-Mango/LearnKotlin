@@ -23,4 +23,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="clear" />
+
+    <Button
+        android:id="@+id/bt_getNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="get random Num" />
+
+    <Button
+        android:id="@+id/addUserBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="add User" />
+
+    <Button
+        android:id="@+id/updateUserBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="update User" />
+
+    <Button
+        android:id="@+id/deleteUserBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="delete User" />
+
+    <Button
+        android:id="@+id/queryUserBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="query user" />
 </LinearLayout>
