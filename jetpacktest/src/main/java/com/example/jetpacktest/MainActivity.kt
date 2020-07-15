@@ -8,7 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
+import androidx.work.BackoffPolicy
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkInfo
+import androidx.work.WorkManager
+import com.example.jetpacktest.Entity.Book
+import com.example.jetpacktest.Entity.User
+import com.example.jetpacktest.WorkManager.SimpleWorker
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
@@ -63,13 +71,16 @@ class MainActivity : AppCompatActivity() {
         lifecycle.addObserver(MyObserver(lifecycle))
 
         val userDao = AppDatabase.getDatabase(this).userDao()
+        val bookDao = AppDatabase.getDatabase(this).bookDao()
         val user1 = User("Tom", 11, "nmsl")
         val user2 = User("Jerry", 32, "qqqq")
+        val book1 = Book("Stepping", 600, "op")
 
         addUserBtn.setOnClickListener {
             thread {
                 user1.id = userDao.insertUser(user1)
                 user2.id = userDao.insertUser(user2)
+                book1.id = bookDao.insertBook(book1)
             }
         }
 
@@ -92,8 +103,26 @@ class MainActivity : AppCompatActivity() {
                 for (user in userDao.loadAllUsers()) {
                     Log.d("Naomi", user.toString())
                 }
+
+                for (book in bookDao.loadAllBook()) {
+                    Log.d("Naomi", book.toString())
+                }
             }
         }
+
+        doWorkBtn.setOnClickListener {
+            val request = OneTimeWorkRequest.Builder(SimpleWorker::class.java)
+                .setInitialDelay(5, TimeUnit.SECONDS)
+                .setBackoffCriteria(BackoffPolicy.LINEAR, 5, TimeUnit.SECONDS)
+                .build()
+            WorkManager.getInstance(this).enqueue(request)
+
+            WorkManager.getInstance(this).getWorkInfoByIdLiveData(request.id).observe(this) {
+                if (it.state == WorkInfo.State.SUCCEEDED)
+                    Log.d("Naomi", "Success in Simple Work")
+            }
+        }
+
     }
 
     private fun refreshCounter() {

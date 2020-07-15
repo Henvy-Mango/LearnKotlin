@@ -1,6 +1,8 @@
 package com.example.jetpacktest
 
 import androidx.lifecycle.*
+import com.example.jetpacktest.Entity.Repository
+import com.example.jetpacktest.Entity.User
 
 /**
  * FileName: MainViewModel
