@@ -1,4 +1,4 @@
-package com.example.jetpacktest
+package com.example.jetpacktest.Entity
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -21,7 +21,11 @@ data class User(var name: String, var age: Int, var desc: String) {
 object Repository {
     fun getUser(userId: String): LiveData<User> {
         val liveData = MutableLiveData<User>()
-        liveData.value = User(userId, (1..100).random(), userId)
+        liveData.value = User(
+            userId,
+            (1..100).random(),
+            userId
+        )
         return liveData
     }
 }
