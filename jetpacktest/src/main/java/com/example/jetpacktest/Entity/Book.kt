@@ -1,0 +1,16 @@
+package com.example.jetpacktest.Entity
+
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+/**
+ * FileName: Book
+ * Author: Naomi
+ * Date: 2020/7/16 0:36
+ * Description:
+ */
+@Entity
+data class Book(var name: String, var pages: Int, var author: String) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0
+}

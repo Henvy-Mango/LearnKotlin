@@ -1,6 +1,7 @@
-package com.example.jetpacktest
+package com.example.jetpacktest.Dao
 
 import androidx.room.*
+import com.example.jetpacktest.Entity.User
 
 /**
  * FileName: UserDao
