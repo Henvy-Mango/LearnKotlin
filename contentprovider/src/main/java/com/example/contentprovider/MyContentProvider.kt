@@ -48,7 +48,7 @@ class MyContentProvider : ContentProvider() {
         val cursor = when (uriMatcher.match(uri)) {
             bookDir -> db.query("Book", projection, selection, selectionArgs, null, null, sortOrder)
             bookItem -> {
-                val www = uri.pathSegments
+                val tmp = uri.pathSegments
                 val bookId = uri.pathSegments[1]
                 db.query("Book", projection, "id=?", arrayOf(bookId), null, null, sortOrder)
             }
