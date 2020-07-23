@@ -1,4 +1,3 @@
-include ':weatherforesight'
 include ':jetpacktest'
 include ':materialtest'
 include ':retrofittest'
