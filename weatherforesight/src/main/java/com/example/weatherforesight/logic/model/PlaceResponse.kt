@@ -8,12 +8,12 @@ import com.google.gson.annotations.SerializedName
  * Date: 2020/9/2 19:45
  * Description:
  */
-class PlaceResponse(val status: String, val places: List<Place>)
+data class PlaceResponse(val status: String, val places: List<Place>)
 
-class Place(
+data class Place(
     val name: String,
     val location: Location,
     @SerializedName("formatted_address") val address: String
 )
 
-class Location(val lng: String, val lat: String)
+data class Location(val lng: String, val lat: String)
