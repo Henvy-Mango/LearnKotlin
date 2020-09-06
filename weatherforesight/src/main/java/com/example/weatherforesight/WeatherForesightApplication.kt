@@ -10,7 +10,7 @@ import android.content.Context
  * Description:
  */
 
-class WeatherforesightApplication : Application() {
+class WeatherForesightApplication : Application() {
     companion object {
         lateinit var context: Context
         const val token = "NQwHhZkBy5ZflTgC"
