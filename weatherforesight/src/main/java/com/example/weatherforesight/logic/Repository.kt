@@ -1,8 +1,11 @@
 package com.example.weatherforesight.logic
 
 import androidx.lifecycle.liveData
+import com.example.weatherforesight.logic.model.Weather
 import com.example.weatherforesight.logic.network.WeatherforesightNetwork
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlin.coroutines.CoroutineContext
 
 /**
@@ -21,6 +24,30 @@ object Repository {
             Result.success(places)
         } else {
             Result.failure(RuntimeException("response status is ${placeResponse.status}"))
+        }
+    }
+
+    fun refreshWeather(lng: String, lat: String, placeName: String) = fire(Dispatchers.IO) {
+        coroutineScope {
+            val deferredRealtime = async {
+                WeatherforesightNetwork.getRealtimeWeather(lng, lat)
+            }
+            val deferredDaily = async {
+                WeatherforesightNetwork.getDailyWeather(lng, lat)
+            }
+            val realtimeResponse = deferredRealtime.await()
+            val dailyResponse = deferredDaily.await()
+            if (realtimeResponse.status == "ok" && dailyResponse.status == "ok") {
+                val weather = Weather(realtimeResponse.result.realtime, dailyResponse.result.daily)
+                Result.success(weather)
+            } else {
+                Result.failure(
+                    RuntimeException(
+                        "realtime response status is ${realtimeResponse.status}" +
+                                "daily response status is ${dailyResponse.status}"
+                    )
+                )
+            }
         }
     }
 
