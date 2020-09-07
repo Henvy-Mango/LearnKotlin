@@ -1,6 +1,8 @@
 package com.example.weatherforesight.logic
 
 import androidx.lifecycle.liveData
+import com.example.weatherforesight.logic.dao.PlaceDao
+import com.example.weatherforesight.logic.model.Place
 import com.example.weatherforesight.logic.model.Weather
 import com.example.weatherforesight.logic.network.WeatherforesightNetwork
 import kotlinx.coroutines.Dispatchers
@@ -51,6 +53,11 @@ object Repository {
         }
     }
 
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
+
+    fun getPlace() = PlaceDao.getPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
         liveData<Result<T>>(context) {

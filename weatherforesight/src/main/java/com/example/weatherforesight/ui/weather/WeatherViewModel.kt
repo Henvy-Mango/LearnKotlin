@@ -5,6 +5,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.example.weatherforesight.logic.Repository
 import com.example.weatherforesight.logic.model.Location
+import com.example.weatherforesight.logic.model.Place
 
 /**
  * FileName: WeatherViewModel
