@@ -1,3 +1,5 @@
+include ':PermissionTest'
+include ':PermissionX'
 include ':weatherforesight'
 include ':jetpacktest'
 include ':materialtest'
