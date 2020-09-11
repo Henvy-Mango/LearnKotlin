@@ -15,9 +15,9 @@ class RecyclerViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_view)
 
-        //initFruit()
-        //val layoutManager = LinearLayoutManager(this)
-        //layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        // initFruit()
+        // val layoutManager = LinearLayoutManager(this)
+        // layoutManager.orientation = LinearLayoutManager.HORIZONTAL
 
         initFruit2()
         val layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
